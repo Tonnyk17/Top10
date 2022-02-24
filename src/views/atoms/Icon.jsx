@@ -6,7 +6,7 @@ export const Icon = ({icon,size, isButton,color}) => {
     return(
         <>
             <IconStyles isButton={isButton}>
-                <FontAwesomeIcon icon={icon} size={size} color={color}/>
+                <FontAwesomeIcon icon={icon} size={size} color={color || 'white'}/>
             </IconStyles>
         </>
     )

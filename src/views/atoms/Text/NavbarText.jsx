@@ -13,5 +13,7 @@ export const NavbarText = ({content,color}) => {
 
 const NavbarTextStyle = styled.h4`
     color: ${props => props.color || 'white'};
+    margin: 10px;
     font-weight: 500;
+    font-size: 24px;
 `

@@ -6,10 +6,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* Created with https://www.css-gradient.com */
-  background: #362dba;
-  background: -webkit-radial-gradient(top left, #362dba, #622cb0);
-  background: -moz-radial-gradient(top left, #362dba, #622cb0);
-  background: radial-gradient(to bottom right, #362dba, #622cb0);
+  background: #201625;
+  background: -webkit-radial-gradient(top, #201625, #1c1220);
+  background: -moz-radial-gradient(top, #201625, #1c1220);
+  background: radial-gradient(to bottom, #201625, #1c1220);
 }
 
 code {
