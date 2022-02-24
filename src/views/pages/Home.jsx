@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Icon } from "../atoms/Icon";
+import { NavbarText } from "../atoms/Text/NavbarText";
 import { Subtitle } from "../atoms/Text/Subtitle";
 import { Title } from "../atoms/Text/Title";
 
@@ -8,6 +10,8 @@ export const Home = () => {
         <>
            <Title content={'Hella'}/> 
            <Subtitle content={'Hella'}/>
+           <Icon/>
+           <NavbarText content={'Hella'}/>
         </>
     )
 }
