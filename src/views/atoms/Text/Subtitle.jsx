@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 
-export const Title = ({content,color, isInteractive}) => {
+export const Subtitle = ({content,color, isInteractive}) => {
     return(
         <>
-            <TitleStyles color={color} isInteractive={isInteractive}>
+            <SubtitleStyles color={color} isInteractive={isInteractive}>
                 {content}
-            </TitleStyles>
+            </SubtitleStyles>
         </>
     )
 }
 
-const TitleStyles = styled.h1`
+const SubtitleStyles = styled.h2`
     width: 100%;
+    font-size: 38px;
     margin: 20px 0;
     color: ${props => props.color || 'white'};
-    font-size: 60px;
     cursor: ${props => props.isInteractive ? 'pointer' : 'default'};
 `
