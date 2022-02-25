@@ -13,8 +13,9 @@ export const Subtitle = ({content,color, isInteractive}) => {
 
 const SubtitleStyles = styled.h2`
     width: 100%;
-    font-size: 38px;
-    margin: 20px 0;
+    font-size: 30px;
+    margin: 10px 0;
+    text-align: center;
     color: ${props => props.color || 'white'};
     cursor: ${props => props.isInteractive ? 'pointer' : 'default'};
 `

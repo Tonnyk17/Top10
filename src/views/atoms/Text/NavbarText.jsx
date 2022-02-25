@@ -15,4 +15,6 @@ const NavbarTextStyle = styled.h4`
     color: ${props => props.color || 'white'};
     font-weight: 500;
     font-size: 24px;
+    text-align: center;
+    margin: 0;
 `

@@ -21,4 +21,10 @@ const IconStyles = styled.div`
     cursor: ${props => props.isButton ? 'pointer' : 'default'};
     margin: 10px;
     text-align: right;
+    ${props => props.isButton && 
+    `&:hover{  
+        & > *{
+            transform: scale(1.1);
+        }
+    }`}
 `

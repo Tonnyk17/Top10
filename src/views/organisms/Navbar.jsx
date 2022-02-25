@@ -13,7 +13,6 @@ export const Navbar = () => {
     }
     return(
         <>
-            <NavbarContainer>
                 <IconButtonContainer isClose={isClose}>
                     <Icon 
                         icon={faBars}
@@ -45,25 +44,19 @@ export const Navbar = () => {
                         content={'Movies'}
                     />
                 </NavbarStyles>
-            </NavbarContainer>
         </>
     )
 }
 
-const NavbarContainer = styled.div`
-    width: 100%;
-    position: relative;
-    height: 100vh;
-    @media screen and (min-width: 700px){
-        width: 350px;
-    }
-`
 
 const NavbarStyles = styled.div`
     width: 100%;
     height: 100%;
     position: fixed;
-    background-color: #581b76;
+    background: #591C76;
+    background: -webkit-radial-gradient(top, #591C76, #1C1220);
+    background: -moz-radial-gradient(top, #591C76, #1C1220);
+    background: radial-gradient(to bottom, #591C76, #1C1220);
     top: 0;
     display: grid;
     grid-template-columns: 1fr;

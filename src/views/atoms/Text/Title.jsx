@@ -15,6 +15,7 @@ const TitleStyles = styled.h1`
     width: 100%;
     margin: 20px 0;
     color: ${props => props.color || 'white'};
-    font-size: 60px;
+    font-size: 40px;
+    text-align: center;
     cursor: ${props => props.isInteractive ? 'pointer' : 'default'};
 `

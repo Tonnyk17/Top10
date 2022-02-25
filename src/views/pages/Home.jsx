@@ -6,11 +6,13 @@ import { Subtitle } from "../atoms/Text/Subtitle";
 import { Title } from "../atoms/Text/Title";
 import { NavbarItem } from "../molecules/NavbarItem";
 import { Navbar } from "../organisms/Navbar";
+import { RecomendedCard } from "../organisms/RecomendedCard";
 
 export const Home = () => {
     return(
         <>
            <Navbar/>
+           <RecomendedCard/>
         </>
     )
 }
