@@ -6,6 +6,7 @@ import { Title } from "../atoms/Text/Title";
 import { TitleImage } from "../atoms/TitleImage";
 import { faHeart, faHeartBroken, faHeartCrack, faPoop } from "@fortawesome/free-solid-svg-icons";
 import { Subtitle } from "../atoms/Text/Subtitle";
+import { IconText } from "../atoms/Text/IconText";
 
 export const RecomendedCard = () => {
     return(
@@ -16,16 +17,22 @@ export const RecomendedCard = () => {
                         <Subtitle content={'Recomended'} color='whitesmoke'/>
                         <TitleImage/>
                         <InfoIcons>
-                            <Icon 
-                                icon={faHeart} 
-                                size={iconSmall}
-                                isButton
-                            />
-                            <Icon 
-                                icon={faPoop} 
-                                size={iconSmall}
-                                isButton
-                            />
+                            <InfoIconsContainer>
+                                <Icon 
+                                    icon={faHeart} 
+                                    size={iconSmall}
+                                    isButton
+                                />
+                                <IconText content={'230'} color='#838383'/>
+                            </InfoIconsContainer>
+                            <InfoIconsContainer>
+                                <Icon 
+                                    icon={faPoop} 
+                                    size={iconSmall}
+                                    isButton
+                                />
+                                <IconText content={'230'} color='#838383'/>
+                            </InfoIconsContainer>
                         </InfoIcons>
                    </RecomendedInfo>
                 </RecomendedInfoBackground>
@@ -78,9 +85,16 @@ const RecomendedInfo = styled.div`
 `;
 
 const InfoIcons = styled.div`
-    width: 100%;
-    margin: 20px 0;
-    display: flex;
+    width: 80%;
+    margin: 5px 0;
+    display: grid;
+    grid-template-columns: repeat(2,100px);
     justify-content: center;
+    justify-items: center;
+    align-content: center;
+`
+const InfoIconsContainer = styled.div`
+    margin: 5px;
+    
 `
 

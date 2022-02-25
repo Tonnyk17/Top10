@@ -53,10 +53,10 @@ const NavbarStyles = styled.div`
     width: 100%;
     height: 100%;
     position: fixed;
-    background: #591C76;
-    background: -webkit-radial-gradient(top, #591C76, #1C1220);
-    background: -moz-radial-gradient(top, #591C76, #1C1220);
-    background: radial-gradient(to bottom, #591C76, #1C1220);
+    background: #251A2B;
+    background: -webkit-radial-gradient(top, #251A2B, #3A2047);
+    background: -moz-radial-gradient(top, #251A2B, #3A2047);
+    background: radial-gradient(to bottom, #251A2B, #3A2047);
     top: 0;
     display: grid;
     grid-template-columns: 1fr;
