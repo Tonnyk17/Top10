@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Icon } from "../atoms/Icon";
 import { NavbarText } from "../atoms/Text/NavbarText";
-import { faHamburger } from "@fortawesome/free-solid-svg-icons";
 import { iconSmall } from "../../constants/sizes";
 
-export const NavbarItem = () => {
+export const NavbarItem = ({icon,content}) => {
     return(
         <>
             <NavbarItemsStyle>
-                <Icon icon={faHamburger} size={iconSmall}/>
-                <NavbarText content={'Hella'}/>
+                <Icon icon={icon} size={iconSmall} isButton/>
+                <NavbarText content={content}/>
             </NavbarItemsStyle>
         </>
     )
@@ -23,4 +22,8 @@ const NavbarItemsStyle = styled.div`
     margin: 0 auto;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    &:hover{
+        transform: scale(1.1);
+    }
 `;
