@@ -43,7 +43,6 @@ export const RecomendedCard = () => {
 
 const RecomendedCardStyles = styled.div`
     width: 100%;
-    background-color: red;
     height: 400px;
     background-image: url(${props => props.backImg});
     background-size: cover;
