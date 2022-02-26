@@ -4,9 +4,11 @@ import { Icon } from "../atoms/Icon";
 import { NavbarItem } from "../molecules/NavbarItem";
 import { faBars, faClose, faGamepad, faHome, faVideoCamera } from "@fortawesome/free-solid-svg-icons";
 import { iconMedium, iconSmall } from "../../constants/sizes";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
 
+    const history = useNavigate()
     const [isClose, setIsClose] = useState(true)
     const handleClose = () => {
         setIsClose(!isClose)
@@ -34,6 +36,7 @@ export const Navbar = () => {
                     <NavbarItem
                         icon={faHome}
                         content={'Home'}
+                        onClick={() => history('/')}
                     />
                     <NavbarItem
                         icon={faGamepad}
@@ -53,16 +56,19 @@ const NavbarStyles = styled.div`
     width: 100%;
     height: 100%;
     position: fixed;
-    background: #251A2B;
-    background: -webkit-radial-gradient(top, #251A2B, #3A2047);
-    background: -moz-radial-gradient(top, #251A2B, #3A2047);
-    background: radial-gradient(to bottom, #251A2B, #3A2047);
+  
+
+    background: #261A2BB3;
+    background: -webkit-linear-gradient(bottom, #261A2BB3, #4A3257);
+    background: -moz-linear-gradient(bottom, #261A2BB3, #4A3257);
+    background: linear-gradient(to top, #261A2BB3, #4A3257);
+border-right: 2px solid #2F2137;
     top: 0;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(auto-fit,50px);
     grid-gap: 50px;
-    z-index: 1;
+    z-index: 10;
     left: ${props => props.isClose ? '-500px' : '0'};
     transition: 0.5s;
     @media screen and (min-width: 700px){

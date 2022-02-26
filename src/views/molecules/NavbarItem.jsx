@@ -4,10 +4,10 @@ import { Icon } from "../atoms/Icon";
 import { NavbarText } from "../atoms/Text/NavbarText";
 import { iconSmall } from "../../constants/sizes";
 
-export const NavbarItem = ({icon,content}) => {
+export const NavbarItem = ({icon,content,onClick}) => {
     return(
         <>
-            <NavbarItemsStyle>
+            <NavbarItemsStyle onClick={onClick}>
                 <Icon 
                     icon={icon} 
                     size={iconSmall} 

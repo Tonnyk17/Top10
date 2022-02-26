@@ -65,8 +65,8 @@ const RecomendedInfoBackground = styled.div`
 
     @media screen and (min-width: ${desktop}){
         align-content: center;
-        justify-content: flex-start;
-        padding-left: 60px;        
+        justify-content: flex-end;
+        padding-right: 60px;        
     }
 `;
 

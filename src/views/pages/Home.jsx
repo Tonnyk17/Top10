@@ -13,9 +13,9 @@ import { RecomendedCard } from "../organisms/RecomendedCard";
 export const Home = () => {
     return(
         <>
-           <Navbar/>
-           <RecomendedCard/>
-           <Categories/>
+            <Navbar/>
+            <RecomendedCard/>
+            <Categories/>
         </>
     )
 }
