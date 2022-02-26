@@ -51,6 +51,7 @@ const CardStyles = styled.div`
     justify-content: center;
     align-items: center;
     overflow:hidden;
+    box-shadow: 0px 1px 5px 2px black;
     & > * {
         position:relative;
         z-index: 1;

@@ -56,13 +56,11 @@ const NavbarStyles = styled.div`
     width: 100%;
     height: 100%;
     position: fixed;
-  
-
     background: #261A2BB3;
     background: -webkit-linear-gradient(bottom, #261A2BB3, #4A3257);
     background: -moz-linear-gradient(bottom, #261A2BB3, #4A3257);
     background: linear-gradient(to top, #261A2BB3, #4A3257);
-border-right: 2px solid #2F2137;
+    border-right: 2px solid #2F2137;
     top: 0;
     display: grid;
     grid-template-columns: 1fr;
@@ -81,6 +79,7 @@ const IconButtonContainer = styled.div`
     display: flex;
     justify-content: flex-start;
     position: fixed;
+    top: 0;
     opacity: ${props => props.isClose ? 1 : 0};
     transition: 0.5s;
 `
