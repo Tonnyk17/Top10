@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { desktop, iconMedium, iconSmall, tablet } from "../../constants/sizes";
+import { desktop, iconSmall } from "../../constants/sizes";
 import { Icon } from "../atoms/Icon";
-import { Title } from "../atoms/Text/Title";
 import { TitleImage } from "../atoms/TitleImage";
-import { faHeart, faHeartBroken, faHeartCrack, faPoop } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faPoop } from "@fortawesome/free-solid-svg-icons";
 import { Subtitle } from "../atoms/Text/Subtitle";
 import { IconText } from "../atoms/Text/IconText";
 

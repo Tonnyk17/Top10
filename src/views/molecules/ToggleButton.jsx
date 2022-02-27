@@ -7,8 +7,8 @@ export const ToggleButton = () => {
     return(
         <>
             <ToggleButtonStyle>
-                <Icon icon={faTable} isButton/>
-                <Icon icon={faGrip} isButton/>
+                    <Icon icon={faTable} isButton/>
+                    <Icon icon={faGrip} isButton/>
             </ToggleButtonStyle>
         </>
     )

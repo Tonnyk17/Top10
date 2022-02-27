@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Icon } from "../atoms/Icon";
 import { NavbarItem } from "../molecules/NavbarItem";
 import { faBars, faClose, faGamepad, faHome, faVideoCamera } from "@fortawesome/free-solid-svg-icons";
-import { iconMedium, iconSmall } from "../../constants/sizes";
+import { iconMedium, iconSmall, tablet } from "../../constants/sizes";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
@@ -67,9 +67,9 @@ const NavbarStyles = styled.div`
     grid-template-rows: repeat(auto-fit,50px);
     grid-gap: 50px;
     z-index: 10;
-    left: ${props => props.isClose ? '-500px' : '0'};
+    left: ${props => props.isClose ? '-790px' : '0'};
     transition: 0.5s;
-    @media screen and (min-width: 700px){
+    @media screen and (min-width: ${tablet}){
         width: 350px;
     }
 `

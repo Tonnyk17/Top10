@@ -25,7 +25,7 @@ const CategoriesCardStyle = styled.div`
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     &:hover{
         background-image: url('https://farm2.staticflickr.com/1721/41076890350_85a097fa23_o.gif');
@@ -39,7 +39,7 @@ const CategoriesCardBackground = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 10px;
     justify-content: center;
     &:hover{
         background-color: rgba(0,0,0,0.6); 

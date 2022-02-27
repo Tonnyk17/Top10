@@ -5,7 +5,6 @@ import { Subtitle } from '../atoms/Text/Subtitle';
 import { faHeart, faPoop,faEye } from '@fortawesome/free-solid-svg-icons';
 import { iconMedium, tablet } from '../../constants/sizes';
 import { IconText } from '../atoms/Text/IconText';
-import { Button } from '../atoms/Button';
 
 export const Card = () => {
     return(
@@ -62,7 +61,7 @@ const CardStyles = styled.div`
         position: absolute;
         width: 500px;
         height: 150%;
-        background: linear-gradient(#962AD2, #000);
+        background: linear-gradient(#36ECF7, #000);
         animation: spin 4s linear infinite;
     }
 
@@ -77,7 +76,7 @@ const CardStyles = styled.div`
 
     &:hover{
         &::before{
-            background: linear-gradient(#36ECF7, #000);
+            background: linear-gradient(#962AD2, #000);
         }
     }
 `;

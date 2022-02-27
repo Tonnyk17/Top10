@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { desktop } from '../../constants/sizes'
 import { Title } from '../atoms/Text/Title'
 import { CategoriesCard } from '../molecules/CategoriesCard'
 
