@@ -4,6 +4,7 @@ import { tablet } from '../../constants/sizes'
 import { Icon } from '../atoms/Icon'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { IconText } from '../atoms/Text/IconText'
+import { Button } from '../atoms/Button'
 
 export const TableInfo = () => {
     return(
@@ -20,43 +21,10 @@ export const TableInfo = () => {
                     </thead>
                     <TableInfoBody>
                         <tr>
-                            <TableInfoItem><TablePoster src='https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1'/></TableInfoItem>
-                            <TableInfoItem>Arcane</TableInfoItem>
                             <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
-                                <IconText content={100}/>
+                                <TablePoster src='https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1'/>
+                                <Button content={'See more'}/>
                             </TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                        </tr>
-                        <tr>
-                            <TableInfoItem><TablePoster src='https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1'/></TableInfoItem>
-                            <TableInfoItem>Arcane</TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                        </tr>
-                        <tr>
-                            <TableInfoItem><TablePoster src='https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1'/></TableInfoItem>
-                            <TableInfoItem>Arcane</TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                        </tr>
-                        <tr>
-                            <TableInfoItem><TablePoster src='https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1'/></TableInfoItem>
                             <TableInfoItem>Arcane</TableInfoItem>
                             <TableInfoItem>
                                 <Icon icon={faHeart} isButton/>
@@ -103,7 +71,7 @@ const TableInfoBody = styled.tbody`
 `
 const TableInfoItem = styled.td`
     width: 25%;
-    height: 120px;
+    height: 180px;
     text-align: center;
     vertical-align: center;
     & > *{
@@ -111,10 +79,9 @@ const TableInfoItem = styled.td`
     }
     border: 1px solid cyan;
     border-collapse: collapse;
-    background-color: #2F2137;
-   
+    background-color: #2F2137;  
 `
 
 const TablePoster = styled.img`
-    width: 70px;
+    width: 80px;
 `

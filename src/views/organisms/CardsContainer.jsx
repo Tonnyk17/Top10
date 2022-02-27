@@ -8,9 +8,7 @@ export const CardsContainer = () => {
     return(
         <>
            <MainCardsContainer>
-            <ToggleButtonContainer>
-                <ToggleButton/>
-            </ToggleButtonContainer>
+            
             <CardsContainerStyle>
                     <Card/>
                     <Card/>
@@ -42,9 +40,4 @@ const MainCardsContainer = styled.div`
     @media screen and (min-width: ${tablet}){
         width: 90%;
     }
-`
-const ToggleButtonContainer = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
 `
