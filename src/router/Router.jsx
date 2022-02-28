@@ -3,14 +3,17 @@ import { CATEGORY_PATH, DETAILS_PATH, HOME_PATH } from "../constants/paths";
 import { CategoryPage } from "../views/pages/CategoryPage";
 import { Details } from "../views/pages/Details";
 import { Home } from "../views/pages/Home";
-import { Provider } from "react-redux";
-import { generateStore } from "../redux/store";
+import {useSelector} from 'react-redux'
+import {useEffect} from 'react'
 
-export const App = () => {
-  const store = generateStore()
+export const Router = () => {
+  const selector = useSelector(store => store)
+  console.log(selector)
+  useEffect(() => {
+    console.log('This is a simple log')
+  },[])
   return (
     <>
-      <Provider store={store}>
         <BrowserRouter>
             <Routes>
                 <Route path={HOME_PATH} element={<Home/>}/>
@@ -18,7 +21,6 @@ export const App = () => {
                 <Route path={DETAILS_PATH} element={<Details/>}/>   
             </Routes>
         </BrowserRouter>
-      </Provider>
     </>
   );
 }
