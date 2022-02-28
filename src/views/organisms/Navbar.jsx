@@ -80,6 +80,7 @@ const IconButtonContainer = styled.div`
     justify-content: flex-start;
     position: fixed;
     top: 0;
+    z-index: 10;
     opacity: ${props => props.isClose ? 1 : 0};
     transition: 0.5s;
 `

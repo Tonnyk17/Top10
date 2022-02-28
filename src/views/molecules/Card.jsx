@@ -116,6 +116,7 @@ const ButtonContainer = styled.div`
     height: 30px;
     margin: 0 auto;
     display: flex;
+    align-items: center;
 `
 const SeeButtonContainer = styled.div`
     width: 100%;

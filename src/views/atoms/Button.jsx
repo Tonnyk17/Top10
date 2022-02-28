@@ -17,14 +17,13 @@ export const Button = ({content, textColor, color}) => {
 }
 
 const ButtonStyle = styled.div`
-    min-width: 60px;
-    width: 20%;
+    width: 100%;
     font-size: 14px;
-    margin: 10px auto;
     box-shadow: 0px 0px 3px 2px cyan;
     border-radius: 5px;
     cursor: pointer;
     padding: 3px;
+    text-align:center;
     background: #261A2BB3;
     background: -webkit-linear-gradient(bottom, #261A2BB3, #4A3257);
     background: -moz-linear-gradient(bottom, #261A2BB3, #4A3257);
@@ -36,5 +35,8 @@ const ButtonStyle = styled.div`
     }
 `
 const ButtonContainer = styled.div`
-    width: 100%;
+    min-width: 60px;
+    width: 20%;
+    max-width: 120px;
+    margin: 0 auto;
 `

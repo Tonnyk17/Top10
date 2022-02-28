@@ -12,7 +12,8 @@ export const IconText = ({content,color}) => {
 }
 
 const IconTextStyle = styled.p`
-    font-size: 12px;
+    font-size: 16px;
     color: ${props => props.color || 'white'};
     text-align: center;
+    margin: 0;
 `
