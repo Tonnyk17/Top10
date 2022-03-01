@@ -2,17 +2,22 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Icon } from "../atoms/Icon";
 import { NavbarItem } from "../molecules/NavbarItem";
-import { faBars, faClose, faGamepad, faHome, faVideoCamera } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faClose, faHome } from "@fortawesome/free-solid-svg-icons";
 import { iconMedium, iconSmall, tablet } from "../../constants/sizes";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getIcons } from "../../constants/functions";
 
 export const Navbar = () => {
-
+    const categories = useSelector(state => state.categories.categories);
     const history = useNavigate()
     const [isClose, setIsClose] = useState(true)
     const handleClose = () => {
         setIsClose(!isClose)
+        console.log(categories)
     }
+
+    
     return(
         <>
                 <IconButtonContainer isClose={isClose}>
@@ -38,14 +43,16 @@ export const Navbar = () => {
                         content={'Home'}
                         onClick={() => history('/')}
                     />
-                    <NavbarItem
-                        icon={faGamepad}
-                        content={'Games'}
-                    />
-                    <NavbarItem
-                        icon={faVideoCamera}
-                        content={'Movies'}
-                    />
+                    {   
+                        categories &&
+                        categories.map(category => (
+                            <NavbarItem
+                                icon={getIcons(category.icon)}
+                                content={category.type}
+                                onClick={() => history(`/${category.type}`)}
+                            />
+                        ))
+                    }
                 </NavbarStyles>
         </>
     )

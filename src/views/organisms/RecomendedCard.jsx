@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { desktop, iconSmall } from "../../constants/sizes";
 import { Icon } from "../atoms/Icon";
 import { TitleImage } from "../atoms/TitleImage";
-import { faHeart, faPoop } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { Subtitle } from "../atoms/Text/Subtitle";
 import { IconText } from "../atoms/Text/IconText";
 
@@ -18,7 +18,7 @@ export const RecomendedCard = () => {
                         <InfoIcons>
                             <InfoIconsContainer>
                                 <Icon 
-                                    icon={faHeart} 
+                                    icon={faThumbsUp} 
                                     size={iconSmall}
                                     isButton
                                 />
@@ -26,7 +26,7 @@ export const RecomendedCard = () => {
                             </InfoIconsContainer>
                             <InfoIconsContainer>
                                 <Icon 
-                                    icon={faPoop} 
+                                    icon={faThumbsDown} 
                                     size={iconSmall}
                                     isButton
                                 />

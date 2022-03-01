@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { tablet } from '../../constants/sizes'
 import { Icon } from '../atoms/Icon'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import { IconText } from '../atoms/Text/IconText'
 import { Button } from '../atoms/Button'
 
@@ -27,11 +27,11 @@ export const TableInfo = () => {
                             </TableInfoItem>
                             <TableInfoItem>Arcane</TableInfoItem>
                             <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
+                                <Icon icon={faThumbsUp} isButton/>
                                 <IconText content={100}/>
                             </TableInfoItem>
                             <TableInfoItem>
-                                <Icon icon={faHeart} isButton/>
+                                <Icon icon={faThumbsDown} isButton/>
                                 <IconText content={100}/>
                             </TableInfoItem>
                         </tr>

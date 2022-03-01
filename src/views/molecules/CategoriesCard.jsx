@@ -5,13 +5,31 @@ import { Subtitle } from '../atoms/Text/Subtitle';
 import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { iconMedium } from '../../constants/sizes';
 
-export const CategoriesCard = () => {
+export const CategoriesCard = ({
+    icon,
+    name,
+    image,
+    gif,
+    onClick
+}) => {
     return(
         <>
-            <CategoriesCardStyle>
+            <CategoriesCardStyle 
+                image={image} 
+                gif={gif}
+                onClick={onClick}
+            >
                 <CategoriesCardBackground>
-                    <Icon icon={faGamepad} size={iconMedium} color='cyan'/>
-                    <Subtitle content={'Games'} color='cyan' isInteractive/>
+                    <Icon 
+                        icon={icon} 
+                        size={iconMedium} 
+                        color='cyan'
+                    />
+                    <Subtitle 
+                        content={name} 
+                        color='cyan' 
+                        isInteractive
+                    />
                 </CategoriesCardBackground>
             </CategoriesCardStyle>
         </>
@@ -21,14 +39,14 @@ export const CategoriesCard = () => {
 const CategoriesCardStyle = styled.div`
     width:300px;
     height: 200px;
-    background-image: url('https://www.savebutonu.com/wp-content/uploads/2020/08/Cyberpunk2077-Keyart.jpg');
+    background-image: url(${props => props.image});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 10px;
     cursor: pointer;
     &:hover{
-        background-image: url('https://farm2.staticflickr.com/1721/41076890350_85a097fa23_o.gif');
+        background-image: url(${props => props.gif});
     }
 `
 const CategoriesCardBackground = styled.div`

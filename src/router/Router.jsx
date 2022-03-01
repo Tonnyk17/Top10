@@ -3,15 +3,17 @@ import { CATEGORY_PATH, DETAILS_PATH, HOME_PATH } from "../constants/paths";
 import { CategoryPage } from "../views/pages/CategoryPage";
 import { Details } from "../views/pages/Details";
 import { Home } from "../views/pages/Home";
-import {useSelector} from 'react-redux'
 import {useEffect} from 'react'
+import { useDispatch } from "react-redux";
+import {getCategories} from '../redux/topDuck';
 
 export const Router = () => {
-  const selector = useSelector(store => store)
-  console.log(selector)
+  const dispatch = useDispatch()
+  
   useEffect(() => {
-    console.log('This is a simple log')
+    dispatch(getCategories())
   },[])
+
   return (
     <>
         <BrowserRouter>

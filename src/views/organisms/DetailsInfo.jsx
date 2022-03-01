@@ -5,7 +5,7 @@ import { DetailsImage } from '../atoms/DetailsImage'
 import { Icon } from '../atoms/Icon'
 import { Subtitle } from '../atoms/Text/Subtitle'
 import { TitleImage } from '../atoms/TitleImage'
-import { faHeart, faPoop, faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsDown, faThumbsUp, faClapperboard } from '@fortawesome/free-solid-svg-icons'
 import { IconText } from '../atoms/Text/IconText'
 
 export const DetailsInfo = () => {
