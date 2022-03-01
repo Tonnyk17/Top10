@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-export const TitleImage = () => {
+export const TitleImage = ({image}) => {
     return(
         <>
-            <TitleImageStyle src="https://i.postimg.cc/Y02XCj0q/Cyberpunk-2077-logo.png"/>
+            <TitleImageStyle src={image}/>
         </>
     )
 }

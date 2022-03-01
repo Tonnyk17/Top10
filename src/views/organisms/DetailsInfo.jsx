@@ -1,48 +1,68 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { iconMedium, iconSmall, tablet } from '../../constants/sizes'
+import { iconSmall, tablet } from '../../constants/sizes'
 import { DetailsImage } from '../atoms/DetailsImage'
 import { Icon } from '../atoms/Icon'
-import { Subtitle } from '../atoms/Text/Subtitle'
 import { TitleImage } from '../atoms/TitleImage'
-import { faThumbsDown, faThumbsUp, faClapperboard } from '@fortawesome/free-solid-svg-icons'
+import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { IconText } from '../atoms/Text/IconText'
+import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 export const DetailsInfo = () => {
+    const {category,details} = useParams();
+    const itemSelector = useSelector(state => state.categories.categories)
+    const [itemData,setItemData] = useState()
+
+    useEffect(() => {
+        const categoryFilter = itemSelector.find(item => item.type === category);
+        if(categoryFilter){
+            const itemsFilter = categoryFilter.items.find(item => item.name === details)
+            setItemData(itemsFilter)
+            console.log(itemsFilter)
+        }
+        
+    },[category, details, itemData, itemSelector])
+    
     return(
         <>
-            <DetailsInfoStyle>
-                <DetailsImage/>
-                <DetailTitleContainer>
-                        <TitleImage/>
-                </DetailTitleContainer>
-            </DetailsInfoStyle>
-            <DetailsDataContainer>
-                <DetailsData>
-                    <IconText content={'Year: 2020'} color={'#AAAAAA'}/>
-                    <DetailsButtonsContainer>
-                        <DetailsButtons>
-                                <Icon 
-                                    icon={faThumbsUp} 
-                                    size={iconSmall} 
-                                    isButton
-                                />
-                                <IconText content={100}/>
-                            </DetailsButtons>
-                            <DetailsButtons>
-                                <Icon 
-                                    icon={faThumbsDown} 
-                                    size={iconSmall} 
-                                    isButton
-                                />
-                                <IconText content={100}/>
-                            </DetailsButtons>
-                    </DetailsButtonsContainer>
-                </DetailsData>
-                <DetailsDescription>
-                    <IconText content={' Would you rather live in peace as Mr. Nobody... or go down for all times in a blaze of glory?'}/>
-                </DetailsDescription>
-            </DetailsDataContainer>
+            {
+                itemData &&
+                <div>
+                    <DetailsInfoStyle>
+                        <DetailsImage backImg={itemData.mainImage}/>
+                        <DetailTitleContainer>
+                                <TitleImage image={itemData.titleImage}/>
+                        </DetailTitleContainer>
+                    </DetailsInfoStyle>
+                    <DetailsDataContainer>
+                        <DetailsData>
+                            <IconText content={`Year ${itemData.year}`} color={'#AAAAAA'}/>
+                            <DetailsButtonsContainer>
+                                <DetailsButtons>
+                                        <Icon 
+                                            icon={faThumbsUp} 
+                                            size={iconSmall} 
+                                            isButton
+                                        />
+                                        <IconText content={itemData.likes}/>
+                                    </DetailsButtons>
+                                    <DetailsButtons>
+                                        <Icon 
+                                            icon={faThumbsDown} 
+                                            size={iconSmall} 
+                                            isButton
+                                        />
+                                        <IconText content={itemData.dislikes}/>
+                                    </DetailsButtons>
+                            </DetailsButtonsContainer>
+                        </DetailsData>
+                        <DetailsDescription>
+                            <IconText content={itemData.description}/>
+                        </DetailsDescription>
+                    </DetailsDataContainer>
+                </div>
+            }
         </>
     )
 }

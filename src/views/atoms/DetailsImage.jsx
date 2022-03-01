@@ -5,7 +5,7 @@ import { desktop } from '../../constants/sizes'
 export const DetailsImage = ({backImg}) => {
     return(
         <>
-            <DetailsImageStyle backImg='https://2077-cyberpunk.ru/wp-content/uploads/2019/09/giphy-3-1.gif'/>
+            <DetailsImageStyle backImg={backImg}/>
         </>
     )
 }

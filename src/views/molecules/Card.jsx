@@ -2,31 +2,33 @@ import React from 'react'
 import styled from 'styled-components'
 import { Icon } from '../atoms/Icon';
 import { Subtitle } from '../atoms/Text/Subtitle';
-import { faHeart, faPoop,faEye } from '@fortawesome/free-solid-svg-icons';
+import { faEye, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
 import { iconMedium, tablet } from '../../constants/sizes';
 import { IconText } from '../atoms/Text/IconText';
+import { useNavigate } from 'react-router-dom';
 
-export const Card = () => {
+export const Card = ({item, category}) => {
+    const history = useNavigate();
     return(
         <>
             <CardStyles>
-                <CardInfoContainer>
+                <CardInfoContainer poster={item.posterImage}>
                     <CardInfo>
                     <ButtonContainer>
                         <Icon 
-                            icon={faHeart} 
+                            icon={faThumbsUp} 
                             isButton 
                         />
-                        <IconText content={'130'}/>
+                        <IconText content={item.likes}/>
                     </ButtonContainer>
                     <ButtonContainer>
                         <Icon 
-                            icon={faPoop} 
+                            icon={faThumbsDown} 
                             isButton
                         />
-                        <IconText content={'130'}/>
+                        <IconText content={item.dislikes}/>
                     </ButtonContainer>
-                    <SeeButtonContainer>
+                    <SeeButtonContainer onClick={() => history(`/${category}/${item.name}`)}>
                         <Icon 
                             icon={faEye} 
                             size={iconMedium} 
@@ -84,7 +86,7 @@ const CardStyles = styled.div`
 const CardInfoContainer = styled.div`
     width: calc(100% - 6px);
     height: calc(100% - 6px);
-    background-image: url('https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1');
+    background-image: url(${props => props.poster});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

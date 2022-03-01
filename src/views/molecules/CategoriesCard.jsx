@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Icon } from '../atoms/Icon'
 import { Subtitle } from '../atoms/Text/Subtitle';
-import { faGamepad } from '@fortawesome/free-solid-svg-icons';
 import { iconMedium } from '../../constants/sizes';
 
 export const CategoriesCard = ({

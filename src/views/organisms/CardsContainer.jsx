@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import { tablet } from '../../constants/sizes'
 import { Card } from '../molecules/Card'
-import { ToggleButton } from '../molecules/ToggleButton'
 
 export const CardsContainer = () => {
+    const categorySelector = useSelector(state => state.categories.categories)
+    const [categoryList,setCategoryList] = useState();
+    const {category} = useParams();
+
+    useEffect(() => {
+        const categoryFilter = categorySelector.find(item => item.type === category);
+        setCategoryList(categoryFilter)
+        console.log('Hella')
+    },[category, categorySelector])
+    
     return(
         <>
            <MainCardsContainer>
-            
-            <CardsContainerStyle>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
+                <CardsContainerStyle>
+                    {
+                        categoryList && 
+                        categoryList.items.map(item => (
+                            <Card 
+                                item={item}
+                                category={category}
+                            />
+                        ))
+                    }
                 </CardsContainerStyle>
            </MainCardsContainer>
         </>
