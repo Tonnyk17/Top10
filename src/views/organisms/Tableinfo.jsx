@@ -1,12 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { tablet } from '../../constants/sizes'
 import { Icon } from '../atoms/Icon'
 import { faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons'
 import { IconText } from '../atoms/Text/IconText'
 import { Button } from '../atoms/Button'
+import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
 
 export const TableInfo = () => {
+    const categorySelector = useSelector(state => state.categories.categories)
+    const [categoryList, setCategoryList] = useState();
+    const {category} = useParams();
+    const history = useNavigate()
+
+    useEffect(() => {
+        const categoryFilter = categorySelector.find(item => item.type === category);
+        setCategoryList(categoryFilter)
+
+    },[category, categorySelector])
     return(
         <>
             <TableContainer>
@@ -20,21 +32,29 @@ export const TableInfo = () => {
                         </tr>
                     </thead>
                     <TableInfoBody>
-                        <tr>
-                            <TableInfoItem>
-                                <TablePoster src='https://i1.wp.com/cinemedios.com/wp-content/uploads/2021/07/Arcane_Poster.png?resize=1024%2C1435&ssl=1'/>
-                                <Button content={'See more'}/>
-                            </TableInfoItem>
-                            <TableInfoItem>Arcane</TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faThumbsUp} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                            <TableInfoItem>
-                                <Icon icon={faThumbsDown} isButton/>
-                                <IconText content={100}/>
-                            </TableInfoItem>
-                        </tr>
+                        {
+                            categoryList && 
+                            categoryList.items.map(item => (
+                                <tr>
+                                    <TableInfoItem>
+                                        <TablePoster src={item.posterImage}/>
+                                        <Button 
+                                            content={'See more'}
+                                            onClick={() => history(`/${category}/${item.name}`)}
+                                        />
+                                    </TableInfoItem>
+                                    <TableInfoItem>{item.name}</TableInfoItem>
+                                    <TableInfoItem>
+                                        <Icon icon={faThumbsUp} isButton/>
+                                        <IconText content={item.likes}/>
+                                    </TableInfoItem>
+                                    <TableInfoItem>
+                                        <Icon icon={faThumbsDown} isButton/>
+                                        <IconText content={item.dislikes}/>
+                                    </TableInfoItem>
+                                </tr>
+                            ))
+                        }
                     </TableInfoBody>
                 </TableInfoStyles>
             </TableContainer>

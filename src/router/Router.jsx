@@ -6,12 +6,12 @@ import { Home } from "../views/pages/Home";
 import {useEffect} from 'react'
 import { useDispatch } from "react-redux";
 import {getCategories} from '../redux/topDuck';
+import { useSelector } from "react-redux";
 
 export const Router = () => {
   const dispatch = useDispatch()
-  
   useEffect(() => {
-    dispatch(getCategories())
+      dispatch(getCategories())
   },[])
 
   return (

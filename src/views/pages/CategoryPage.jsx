@@ -6,10 +6,11 @@ import { Title } from '../atoms/Text/Title'
 import { CardsContainer } from '../organisms/CardsContainer'
 import { Navbar } from '../organisms/Navbar'
 import { TableInfo } from '../organisms/Tableinfo'
+import { useSelector } from 'react-redux'
 
 export const CategoryPage = () => {
+    const isTable = useSelector(state => state.categories.isTable);
     const {category} = useParams()
-    const [isGrid, setIsGrid] = useState(true)
     
     return(
         <>
@@ -19,7 +20,7 @@ export const CategoryPage = () => {
                 <ToggleButton/>
             </ToggleButtonContainer>
             {
-                isGrid ? 
+                isTable ? 
                 <CardsContainer/>
                 :
                 <TableInfo/>

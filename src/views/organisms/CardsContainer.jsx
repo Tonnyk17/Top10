@@ -13,7 +13,7 @@ export const CardsContainer = () => {
     useEffect(() => {
         const categoryFilter = categorySelector.find(item => item.type === category);
         setCategoryList(categoryFilter)
-        console.log('Hella')
+        
     },[category, categorySelector])
     
     return(

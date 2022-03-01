@@ -1,13 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export const Button = ({content, textColor, color}) => {
+export const Button = ({content, textColor, color, onClick}) => {
     return(
         <>
            <ButtonContainer>
                 <ButtonStyle 
                     textColor={textColor} 
                     color={color}
+                    onClick={onClick}
                 >
                     {content}
                 </ButtonStyle>

@@ -1,9 +1,11 @@
 
 const initialState = {
-    categories:[]
+    categories:[],
+    isTable: false
 }
 
 const GET_CATEGORIES = 'GET_CATEGORIES';
+const TOGGLE_VIEW = 'TOGGLE_VIEW';
 
 export const topReducer = (state = initialState, action) => {
     switch(action.type){
@@ -11,6 +13,11 @@ export const topReducer = (state = initialState, action) => {
             return {
                 ...state,
                 categories: action.payload
+            }
+        case TOGGLE_VIEW:
+            return {
+                ...state,
+                isTable: !state.isTable
             }
         default: 
             return state
@@ -29,3 +36,11 @@ export const getCategories = () => async(dispatch) => {
         console.log(error)
     }
 }
+
+export const toggleView = () => (dispatch) => {
+    dispatch({
+        type: TOGGLE_VIEW
+    })
+}
+
+

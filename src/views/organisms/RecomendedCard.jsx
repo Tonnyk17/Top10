@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { desktop, iconSmall } from "../../constants/sizes";
 import { Icon } from "../atoms/Icon";
@@ -6,36 +6,52 @@ import { TitleImage } from "../atoms/TitleImage";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { Subtitle } from "../atoms/Text/Subtitle";
 import { IconText } from "../atoms/Text/IconText";
+import { useSelector } from "react-redux";
 
 export const RecomendedCard = () => {
+    const categorySelector = useSelector(state => state.categories.categories)
+    const [recomendedItem, setRecomendedItem] = useState();
+
+    useEffect(() => {
+        const randomCategoryNumber = Math.floor(Math.random() * categorySelector.length);
+
+        if(categorySelector.length > 0){
+            const randomItemNumber = Math.floor(Math.random() * (categorySelector[randomCategoryNumber].items.length))
+            setRecomendedItem(categorySelector[randomCategoryNumber].items[randomItemNumber])
+        }
+    },[categorySelector, categorySelector.length])
+
     return(
         <>
-            <RecomendedCardStyles backImg={'https://cdn.staticneo.com/n/8/cyberpunk_2077_new_gen_demo_banner.jpg'}>
-                <RecomendedInfoBackground>
-                   <RecomendedInfo>
-                        <Subtitle content={'Recomended'} color='whitesmoke'/>
-                        <TitleImage/>
-                        <InfoIcons>
-                            <InfoIconsContainer>
-                                <Icon 
-                                    icon={faThumbsUp} 
-                                    size={iconSmall}
-                                    isButton
-                                />
-                                <IconText content={'230'} color='#838383'/>
-                            </InfoIconsContainer>
-                            <InfoIconsContainer>
-                                <Icon 
-                                    icon={faThumbsDown} 
-                                    size={iconSmall}
-                                    isButton
-                                />
-                                <IconText content={'230'} color='#838383'/>
-                            </InfoIconsContainer>
-                        </InfoIcons>
-                   </RecomendedInfo>
-                </RecomendedInfoBackground>
-            </RecomendedCardStyles>
+            {
+                recomendedItem &&
+                    <RecomendedCardStyles backImg={recomendedItem.mainImage}>
+                        <RecomendedInfoBackground>
+                            <RecomendedInfo>
+                                    <Subtitle content={'Recomended'} color='whitesmoke'/>
+                                    <TitleImage image={recomendedItem.titleImage}/>
+                                    <InfoIcons>
+                                        <InfoIconsContainer>
+                                            <Icon 
+                                                icon={faThumbsUp} 
+                                                size={iconSmall}
+                                                isButton
+                                            />
+                                            <IconText content={recomendedItem.likes} color='#838383'/>
+                                        </InfoIconsContainer>
+                                        <InfoIconsContainer>
+                                            <Icon 
+                                                icon={faThumbsDown} 
+                                                size={iconSmall}
+                                                isButton
+                                            />
+                                            <IconText content={recomendedItem.dislikes} color='#838383'/>
+                                        </InfoIconsContainer>
+                                    </InfoIcons>
+                            </RecomendedInfo>
+                        </RecomendedInfoBackground>
+                    </RecomendedCardStyles>
+            }
         </>
     )
 }
