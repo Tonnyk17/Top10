@@ -33,7 +33,6 @@ export const RecomendedCard = () => {
     useEffect(() => {
         if(recomendedItem){
             const myLikesFilter = likesSelector.find(data => data.name === recomendedItem.name)
-            console.log(recomendedItem)
             if(myLikesFilter){
                 if(myLikesFilter.isLike || recomendedItem.isLike){
                     setIsLiked(true)
@@ -49,7 +48,6 @@ export const RecomendedCard = () => {
     useEffect(() => {
         if(recomendedItem){
             const myDislikeFilter = dislikeSelector.find(data => data.name === recomendedItem.name)
-            console.log(myDislikeFilter)
             if(myDislikeFilter){
                 if(myDislikeFilter.isDislike || recomendedItem.isDislike){
                     setIsDisliked(true)

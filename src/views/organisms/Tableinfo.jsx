@@ -31,8 +31,12 @@ export const TableInfo = () => {
                     <TableInfoBody>
                         {
                             categoryList && 
-                            categoryList.items.map(item => (
-                                <TableInfoRow item={item} category={category}/>
+                            categoryList.items.map((item,i) => (
+                                <TableInfoRow 
+                                    item={item} 
+                                    category={category}
+                                    key={i}
+                                />
                             ))
                         }
                     </TableInfoBody>

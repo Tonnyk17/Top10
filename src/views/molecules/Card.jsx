@@ -34,7 +34,7 @@ export const Card = ({item, category}) => {
 
     useEffect(() => {
         const myDislikeFilter = dislikeSelector.find(data => data.name === item.name)
-        console.log(myDislikeFilter)
+       
         if(myDislikeFilter){
             if(myDislikeFilter.isDislike || item.isDislike){
                 setIsDisliked(true)

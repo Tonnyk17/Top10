@@ -17,13 +17,14 @@ export const Categories = () => {
             <CategoriesStyle>
                 {
                     categories &&
-                    categories.map(category => (
+                    categories.map((category, i) => (
                         <CategoriesCard
                             icon={getIcons(category.icon)}
                             name={category.type}
                             image={category.image}
                             gif={category.gif}
                             onClick={() => history(`/${category.type}`)}
+                            key={i}
                         />
                     ))
                 }

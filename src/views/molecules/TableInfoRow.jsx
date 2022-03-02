@@ -30,11 +30,11 @@ export const TableInfoRow = ({item, category}) => {
             }
         }
         
-    },[likesSelector])
+    },[item.isLike, item.name, likesSelector])
 
     useEffect(() => {
         const myDislikeFilter = dislikeSelector.find(data => data.name === item.name)
-        console.log(myDislikeFilter)
+        
         if(myDislikeFilter){
             if(myDislikeFilter.isDislike || item.isDislike){
                 setIsDisliked(true)
@@ -44,7 +44,7 @@ export const TableInfoRow = ({item, category}) => {
             }
         }
         
-    },[dislikeSelector])
+    },[dislikeSelector, item.isDislike, item.name])
     return(
         <>
             <tr>

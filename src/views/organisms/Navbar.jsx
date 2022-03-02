@@ -45,11 +45,12 @@ export const Navbar = () => {
                     />
                     {   
                         categories &&
-                        categories.map(category => (
+                        categories.map((category, i) => (
                             <NavbarItem
                                 icon={getIcons(category.icon)}
                                 content={category.type}
                                 onClick={() => history(`/${category.type}`)}
+                                key={i}
                             />
                         ))
                     }

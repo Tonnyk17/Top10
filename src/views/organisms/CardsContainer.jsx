@@ -22,10 +22,11 @@ export const CardsContainer = () => {
                 <CardsContainerStyle>
                     {
                         categoryList && 
-                        categoryList.items.map(item => (
+                        categoryList.items.map((item,i) => (
                             <Card 
                                 item={item}
                                 category={category}
+                                key={i}
                             />
                         ))
                     }
