@@ -16,8 +16,8 @@ export const DetailsInfo = () => {
     const itemSelector = useSelector(state => state.categories.categories)
     const [itemData,setItemData] = useState()
     const dispatch = useDispatch()
-    const likesSelector = useSelector(state => state.categories.myLikes);
-    const dislikeSelector = useSelector(state =>  state.categories.myDislikes);
+    const localSelector = useSelector(state => state.categories);
+    
     const [isLiked,setIsLiked] = useState(false)
     const [isDisliked, setIsDisliked] = useState(false);
     const [myLocalLikes, setMyLocalLikes] = useState();
@@ -33,7 +33,7 @@ export const DetailsInfo = () => {
 
     useEffect(() => {
         if(itemData){
-            const myLikesFilter = likesSelector.find(data => data.name === itemData.name)
+            const myLikesFilter = localSelector.myLikes?.find(data => data.name === itemData.name)
             console.log(itemData)
             if(myLikesFilter){
                 if(myLikesFilter.isLike || itemData.isLike){
@@ -45,11 +45,11 @@ export const DetailsInfo = () => {
             }
         }
         
-    },[likesSelector,itemData])
+    },[localSelector,itemData])
 
     useEffect(() => {
         if(itemData){
-            const myDislikeFilter = dislikeSelector.find(data => data.name === itemData.name)
+            const myDislikeFilter = localSelector.myDislikes?.find(data => data.name === itemData.name)
             console.log(myDislikeFilter)
             if(myDislikeFilter){
                 if(myDislikeFilter.isDislike || itemData.isDislike){
@@ -61,7 +61,7 @@ export const DetailsInfo = () => {
             }
         }
         
-    },[dislikeSelector,itemData])
+    },[localSelector,itemData])
     
     return(
         <>

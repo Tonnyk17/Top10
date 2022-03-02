@@ -11,40 +11,43 @@ import { setLike, setDislike } from '../../redux/topDuck';
 
 export const Card = ({item, category}) => {
     const dispatch = useDispatch()
-    const likesSelector = useSelector(state => state.categories.myLikes);
-    const dislikeSelector = useSelector(state =>  state.categories.myDislikes);
+    const localSelector = useSelector(state => state.categories);
     const [isLiked,setIsLiked] = useState(false)
     const [isDisliked, setIsDisliked] = useState(false);
     const [myLocalLikes, setMyLocalLikes] = useState();
     const [myLocalDislikes, setMyLocalDislikes] = useState()
 
     useEffect(() => {
-        const myLikesFilter = likesSelector.find(data => data.name === item.name)
+        if(localSelector.myLikes){
+            const myLikesFilter = localSelector.myLikes?.find(data => data.name === item.name)
     
-        if(myLikesFilter){
-            if(myLikesFilter.isLike || item.isLike){
-                setIsLiked(true)
-                setIsDisliked(false)
-                setMyLocalLikes(myLikesFilter)
-                setMyLocalDislikes(myLikesFilter)
+            if(myLikesFilter){
+                if(myLikesFilter.isLike || item.isLike){
+                    setIsLiked(true)
+                    setIsDisliked(false)
+                    setMyLocalLikes(myLikesFilter)
+                    setMyLocalDislikes(myLikesFilter)
+                }
             }
         }
         
-    },[item.isLike, item.name, likesSelector])
+    },[item.isLike, item.name, localSelector])
 
     useEffect(() => {
-        const myDislikeFilter = dislikeSelector.find(data => data.name === item.name)
+        if(localSelector.myDislikes){
+            const myDislikeFilter = localSelector.myDislikes.find(data => data.name === item.name)
        
-        if(myDislikeFilter){
-            if(myDislikeFilter.isDislike || item.isDislike){
-                setIsDisliked(true)
-                setIsLiked(false)
-                setMyLocalDislikes(myDislikeFilter)
-                setMyLocalLikes(myDislikeFilter)
+            if(myDislikeFilter){
+                if(myDislikeFilter.isDislike || item.isDislike){
+                    setIsDisliked(true)
+                    setIsLiked(false)
+                    setMyLocalDislikes(myDislikeFilter)
+                    setMyLocalLikes(myDislikeFilter)
+                }
             }
-        }
         
-    },[dislikeSelector, item.isDislike, item.name])
+        }
+    },[localSelector, item.isDislike, item.name])
 
     const history = useNavigate();
     return(

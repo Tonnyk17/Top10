@@ -25,8 +25,8 @@ export const Reviews = () => {
                     <Subtitle content={`${itemData.reviews.length - 1} Reviews`}/>
                     <ReviewsStyle>
                         {
-                            itemData.reviews.map((item) => (
-                                <ReviewText content={item}/>
+                            itemData.reviews.map((item,i) => (
+                                <ReviewText content={item} key={i}/>
                             ))
                          
                         }

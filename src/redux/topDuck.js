@@ -24,12 +24,12 @@ export const topReducer = (state = initialState, action) => {
         case GET_MY_LIKES:
             return{
                 ...state,
-                myLikes: action.payload
+                myLikes: action.payload ? action.payload : []
             }
         case GET_MY_DISLIKES:
             return{
                 ...state,
-                myDislikes: action.payload
+                myDislikes: action.payload ? action.payload : []
             }
         case TOGGLE_VIEW:
             return {

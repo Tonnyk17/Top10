@@ -14,8 +14,7 @@ export const RecomendedCard = () => {
     const categorySelector = useSelector(state => state.categories.categories)
     const [recomendedItem, setRecomendedItem] = useState();
     const dispatch = useDispatch();
-    const likesSelector = useSelector(state => state.categories.myLikes);
-    const dislikeSelector = useSelector(state =>  state.categories.myDislikes);
+    const localSelector = useSelector(state => state.categories);
     const [isLiked,setIsLiked] = useState(false)
     const [isDisliked, setIsDisliked] = useState(false);
     const [myLocalLikes, setMyLocalLikes] = useState();
@@ -28,11 +27,11 @@ export const RecomendedCard = () => {
             const randomItemNumber = Math.floor(Math.random() * (categorySelector[randomCategoryNumber].items.length))
             setRecomendedItem(categorySelector[randomCategoryNumber].items[randomItemNumber])
         }
-    },[categorySelector.length])
+    },[categorySelector, categorySelector.length])
 
     useEffect(() => {
         if(recomendedItem){
-            const myLikesFilter = likesSelector.find(data => data.name === recomendedItem.name)
+            const myLikesFilter = localSelector.myLikes?.find(data => data.name === recomendedItem.name)
             if(myLikesFilter){
                 if(myLikesFilter.isLike || recomendedItem.isLike){
                     setIsLiked(true)
@@ -43,11 +42,11 @@ export const RecomendedCard = () => {
             }
         }
         
-    },[likesSelector,recomendedItem])
+    },[localSelector,recomendedItem])
 
     useEffect(() => {
         if(recomendedItem){
-            const myDislikeFilter = dislikeSelector.find(data => data.name === recomendedItem.name)
+            const myDislikeFilter = localSelector.myDislikes?.find(data => data.name === recomendedItem.name)
             if(myDislikeFilter){
                 if(myDislikeFilter.isDislike || recomendedItem.isDislike){
                     setIsDisliked(true)
@@ -58,7 +57,7 @@ export const RecomendedCard = () => {
             }
         }
         
-    },[dislikeSelector,recomendedItem])
+    },[localSelector,recomendedItem])
 
     return(
         <>
