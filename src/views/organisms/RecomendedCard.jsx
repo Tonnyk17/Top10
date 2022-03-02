@@ -14,6 +14,12 @@ export const RecomendedCard = () => {
     const categorySelector = useSelector(state => state.categories.categories)
     const [recomendedItem, setRecomendedItem] = useState();
     const dispatch = useDispatch();
+    const likesSelector = useSelector(state => state.categories.myLikes);
+    const dislikeSelector = useSelector(state =>  state.categories.myDislikes);
+    const [isLiked,setIsLiked] = useState(false)
+    const [isDisliked, setIsDisliked] = useState(false);
+    const [myLocalLikes, setMyLocalLikes] = useState();
+    const [myLocalDislikes, setMyLocalDislikes] = useState()
 
     useEffect(() => {
         const randomCategoryNumber = Math.floor(Math.random() * categorySelector.length);
@@ -23,6 +29,38 @@ export const RecomendedCard = () => {
             setRecomendedItem(categorySelector[randomCategoryNumber].items[randomItemNumber])
         }
     },[categorySelector.length])
+
+    useEffect(() => {
+        if(recomendedItem){
+            const myLikesFilter = likesSelector.find(data => data.name === recomendedItem.name)
+            console.log(recomendedItem)
+            if(myLikesFilter){
+                if(myLikesFilter.isLike || recomendedItem.isLike){
+                    setIsLiked(true)
+                    setIsDisliked(false)
+                    setMyLocalLikes(myLikesFilter)
+                    setMyLocalDislikes(myLikesFilter)
+                }
+            }
+        }
+        
+    },[likesSelector,recomendedItem])
+
+    useEffect(() => {
+        if(recomendedItem){
+            const myDislikeFilter = dislikeSelector.find(data => data.name === recomendedItem.name)
+            console.log(myDislikeFilter)
+            if(myDislikeFilter){
+                if(myDislikeFilter.isDislike || recomendedItem.isDislike){
+                    setIsDisliked(true)
+                    setIsLiked(false)
+                    setMyLocalDislikes(myDislikeFilter)
+                    setMyLocalLikes(myDislikeFilter)
+                }
+            }
+        }
+        
+    },[dislikeSelector,recomendedItem])
 
     return(
         <>
@@ -40,9 +78,9 @@ export const RecomendedCard = () => {
                                                 size={iconSmall}
                                                 isButton
                                                 onClick={() => dispatch(setLike(recomendedItem))}
-                                                color={recomendedItem.isLike && 'cyan'}
+                                                color={isLiked && 'cyan'}
                                             />
-                                            <IconText content={recomendedItem.likes} color='#838383'/>
+                                            <IconText content={myLocalLikes ? myLocalLikes.likes : recomendedItem.likes} color='#838383'/>
                                         </InfoIconsContainer>
                                         <InfoIconsContainer>
                                             <Icon 
@@ -50,9 +88,9 @@ export const RecomendedCard = () => {
                                                 size={iconSmall}
                                                 isButton
                                                 onClick={() => dispatch(setDislike(recomendedItem))}
-                                                color={recomendedItem.isDislike && 'cyan'}
+                                                color={isDisliked && 'cyan'}
                                             />
-                                            <IconText content={recomendedItem.dislikes} color='#838383'/>
+                                            <IconText content={myLocalDislikes ? myLocalDislikes.dislikes : recomendedItem.dislikes} color='#838383'/>
                                         </InfoIconsContainer>
                                     </InfoIcons>
                             </RecomendedInfo>

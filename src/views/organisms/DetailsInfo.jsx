@@ -16,6 +16,12 @@ export const DetailsInfo = () => {
     const itemSelector = useSelector(state => state.categories.categories)
     const [itemData,setItemData] = useState()
     const dispatch = useDispatch()
+    const likesSelector = useSelector(state => state.categories.myLikes);
+    const dislikeSelector = useSelector(state =>  state.categories.myDislikes);
+    const [isLiked,setIsLiked] = useState(false)
+    const [isDisliked, setIsDisliked] = useState(false);
+    const [myLocalLikes, setMyLocalLikes] = useState();
+    const [myLocalDislikes, setMyLocalDislikes] = useState()
 
     useEffect(() => {
         const categoryFilter = itemSelector.find(item => item.type === category);
@@ -24,6 +30,38 @@ export const DetailsInfo = () => {
             setItemData(itemsFilter)
         }
     },[category, details, itemData, itemSelector])
+
+    useEffect(() => {
+        if(itemData){
+            const myLikesFilter = likesSelector.find(data => data.name === itemData.name)
+            console.log(itemData)
+            if(myLikesFilter){
+                if(myLikesFilter.isLike || itemData.isLike){
+                    setIsLiked(true)
+                    setIsDisliked(false)
+                    setMyLocalLikes(myLikesFilter)
+                    setMyLocalDislikes(myLikesFilter)
+                }
+            }
+        }
+        
+    },[likesSelector,itemData])
+
+    useEffect(() => {
+        if(itemData){
+            const myDislikeFilter = dislikeSelector.find(data => data.name === itemData.name)
+            console.log(myDislikeFilter)
+            if(myDislikeFilter){
+                if(myDislikeFilter.isDislike || itemData.isDislike){
+                    setIsDisliked(true)
+                    setIsLiked(false)
+                    setMyLocalDislikes(myDislikeFilter)
+                    setMyLocalLikes(myDislikeFilter)
+                }
+            }
+        }
+        
+    },[dislikeSelector,itemData])
     
     return(
         <>
@@ -46,9 +84,9 @@ export const DetailsInfo = () => {
                                             size={iconSmall} 
                                             isButton
                                             onClick={() => dispatch(setLike(itemData))}
-                                            color={itemData.isLike && 'cyan'}
+                                            color={isLiked && 'cyan'}
                                         />
-                                        <IconText content={itemData.likes}/>
+                                        <IconText content={myLocalLikes ? myLocalLikes.likes : itemData.likes}/>
                                     </DetailsButtons>
                                     <DetailsButtons>
                                         <Icon 
@@ -56,9 +94,9 @@ export const DetailsInfo = () => {
                                             size={iconSmall} 
                                             isButton
                                             onClick={() => dispatch(setDislike(itemData))}
-                                            color={itemData.isDislike && 'cyan'}
+                                            color={isDisliked && 'cyan'}
                                         />
-                                        <IconText content={itemData.dislikes}/>
+                                        <IconText content={myLocalDislikes ? myLocalDislikes.dislikes : itemData.dislikes}/>
                                     </DetailsButtons>
                             </DetailsButtonsContainer>
                         </DetailsData>

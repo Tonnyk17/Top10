@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../atoms/Icon';
 import { Subtitle } from '../atoms/Text/Subtitle';
@@ -11,6 +11,41 @@ import { setLike, setDislike } from '../../redux/topDuck';
 
 export const Card = ({item, category}) => {
     const dispatch = useDispatch()
+    const likesSelector = useSelector(state => state.categories.myLikes);
+    const dislikeSelector = useSelector(state =>  state.categories.myDislikes);
+    const [isLiked,setIsLiked] = useState(false)
+    const [isDisliked, setIsDisliked] = useState(false);
+    const [myLocalLikes, setMyLocalLikes] = useState();
+    const [myLocalDislikes, setMyLocalDislikes] = useState()
+
+    useEffect(() => {
+        const myLikesFilter = likesSelector.find(data => data.name === item.name)
+    
+        if(myLikesFilter){
+            if(myLikesFilter.isLike || item.isLike){
+                setIsLiked(true)
+                setIsDisliked(false)
+                setMyLocalLikes(myLikesFilter)
+                setMyLocalDislikes(myLikesFilter)
+            }
+        }
+        
+    },[item.isLike, item.name, likesSelector])
+
+    useEffect(() => {
+        const myDislikeFilter = dislikeSelector.find(data => data.name === item.name)
+        console.log(myDislikeFilter)
+        if(myDislikeFilter){
+            if(myDislikeFilter.isDislike || item.isDislike){
+                setIsDisliked(true)
+                setIsLiked(false)
+                setMyLocalDislikes(myDislikeFilter)
+                setMyLocalLikes(myDislikeFilter)
+            }
+        }
+        
+    },[dislikeSelector, item.isDislike, item.name])
+
     const history = useNavigate();
     return(
         <>
@@ -22,18 +57,18 @@ export const Card = ({item, category}) => {
                             icon={faThumbsUp} 
                             isButton 
                             onClick={() => dispatch(setLike(item))}
-                            color={item.isLike && 'cyan'}
+                            color={isLiked && 'cyan'}
                         />
-                        <IconText content={item.likes}/>
+                        <IconText content={myLocalLikes ? myLocalLikes.likes : item.likes}/>
                     </ButtonContainer>
                     <ButtonContainer>
                         <Icon 
                             icon={faThumbsDown} 
                             isButton
                             onClick={() => dispatch(setDislike(item))}
-                            color={item.isDislike && 'cyan'}
+                            color={isDisliked && 'cyan'}
                         />
-                        <IconText content={item.dislikes}/>
+                        <IconText content={myLocalDislikes ? myLocalDislikes.dislikes :  item.dislikes}/>
                     </ButtonContainer>
                     <SeeButtonContainer onClick={() => history(`/${category}/${item.name}`)}>
                         <Icon 
