@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { ToggleButton } from '../molecules/ToggleButton'
 import { useParams } from 'react-router-dom'
@@ -17,13 +17,13 @@ export const CategoryPage = () => {
             <Navbar/>
             <Title content={`Top 10 ${category}`}/>
             <ToggleButtonContainer>
-                <ToggleButton/>
+                <ToggleButton />
             </ToggleButtonContainer>
             {
                 isTable ? 
-                <CardsContainer/>
-                :
                 <TableInfo/>
+                :
+                <CardsContainer/>
             }
            
         </>

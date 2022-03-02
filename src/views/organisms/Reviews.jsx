@@ -15,7 +15,6 @@ export const Reviews = () => {
         if(categoryFilter){
             const itemsFilter = categoryFilter.items.find(item => item.name === details)
             setItemData(itemsFilter)
-            console.log(itemsFilter)
         }
     },[category, details, itemData, itemSelector])
     return(
@@ -26,9 +25,10 @@ export const Reviews = () => {
                     <Subtitle content={`${itemData.reviews.length - 1} Reviews`}/>
                     <ReviewsStyle>
                         {
-                            itemData.reviews.map(item => (
+                            itemData.reviews.map((item) => (
                                 <ReviewText content={item}/>
                             ))
+                         
                         }
                     </ReviewsStyle>
                 </div>

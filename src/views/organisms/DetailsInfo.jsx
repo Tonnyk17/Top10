@@ -19,7 +19,6 @@ export const DetailsInfo = () => {
         if(categoryFilter){
             const itemsFilter = categoryFilter.items.find(item => item.name === details)
             setItemData(itemsFilter)
-            console.log(itemsFilter)
         }
         
     },[category, details, itemData, itemSelector])
