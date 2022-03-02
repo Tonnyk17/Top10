@@ -34,7 +34,7 @@ export const DetailsInfo = () => {
     useEffect(() => {
         if(itemData){
             const myLikesFilter = localSelector.myLikes?.find(data => data.name === itemData.name)
-            console.log(itemData)
+    
             if(myLikesFilter){
                 if(myLikesFilter.isLike || itemData.isLike){
                     setIsLiked(true)
@@ -50,7 +50,7 @@ export const DetailsInfo = () => {
     useEffect(() => {
         if(itemData){
             const myDislikeFilter = localSelector.myDislikes?.find(data => data.name === itemData.name)
-            console.log(myDislikeFilter)
+         
             if(myDislikeFilter){
                 if(myDislikeFilter.isDislike || itemData.isDislike){
                     setIsDisliked(true)

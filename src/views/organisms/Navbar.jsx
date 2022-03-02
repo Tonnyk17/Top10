@@ -14,7 +14,6 @@ export const Navbar = () => {
     const [isClose, setIsClose] = useState(true)
     const handleClose = () => {
         setIsClose(!isClose)
-        console.log(categories)
     }
 
     

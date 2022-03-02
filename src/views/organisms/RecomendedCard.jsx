@@ -63,10 +63,10 @@ export const RecomendedCard = () => {
         <>
             {
                 recomendedItem &&
-                    <RecomendedCardStyles backImg={recomendedItem.mainImage}>
+                    <RecomendedCardStyles backImg={recomendedItem.recommendedImage}>
                         <RecomendedInfoBackground>
                             <RecomendedInfo>
-                                    <Subtitle content={'Recomended'} color='whitesmoke'/>
+                                    <Subtitle content={'Recommended'} color='whitesmoke'/>
                                     <TitleImage image={recomendedItem.titleImage}/>
                                     <InfoIcons>
                                         <InfoIconsContainer>
