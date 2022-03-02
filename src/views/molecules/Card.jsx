@@ -6,8 +6,11 @@ import { faEye, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-ico
 import { iconMedium, tablet } from '../../constants/sizes';
 import { IconText } from '../atoms/Text/IconText';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLike, setDislike } from '../../redux/topDuck';
 
 export const Card = ({item, category}) => {
+    const dispatch = useDispatch()
     const history = useNavigate();
     return(
         <>
@@ -18,6 +21,8 @@ export const Card = ({item, category}) => {
                         <Icon 
                             icon={faThumbsUp} 
                             isButton 
+                            onClick={() => dispatch(setLike(item))}
+                            color={item.isLike && 'cyan'}
                         />
                         <IconText content={item.likes}/>
                     </ButtonContainer>
@@ -25,6 +30,8 @@ export const Card = ({item, category}) => {
                         <Icon 
                             icon={faThumbsDown} 
                             isButton
+                            onClick={() => dispatch(setDislike(item))}
+                            color={item.isDislike && 'cyan'}
                         />
                         <IconText content={item.dislikes}/>
                     </ButtonContainer>

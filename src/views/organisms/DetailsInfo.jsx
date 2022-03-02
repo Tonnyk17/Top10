@@ -8,11 +8,14 @@ import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import { IconText } from '../atoms/Text/IconText'
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setLike,setDislike } from '../../redux/topDuck'
 
 export const DetailsInfo = () => {
     const {category,details} = useParams();
     const itemSelector = useSelector(state => state.categories.categories)
     const [itemData,setItemData] = useState()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const categoryFilter = itemSelector.find(item => item.type === category);
@@ -20,7 +23,6 @@ export const DetailsInfo = () => {
             const itemsFilter = categoryFilter.items.find(item => item.name === details)
             setItemData(itemsFilter)
         }
-        
     },[category, details, itemData, itemSelector])
     
     return(
@@ -43,6 +45,8 @@ export const DetailsInfo = () => {
                                             icon={faThumbsUp} 
                                             size={iconSmall} 
                                             isButton
+                                            onClick={() => dispatch(setLike(itemData))}
+                                            color={itemData.isLike && 'cyan'}
                                         />
                                         <IconText content={itemData.likes}/>
                                     </DetailsButtons>
@@ -51,6 +55,8 @@ export const DetailsInfo = () => {
                                             icon={faThumbsDown} 
                                             size={iconSmall} 
                                             isButton
+                                            onClick={() => dispatch(setDislike(itemData))}
+                                            color={itemData.isDislike && 'cyan'}
                                         />
                                         <IconText content={itemData.dislikes}/>
                                     </DetailsButtons>

@@ -5,14 +5,23 @@ import { Details } from "../views/pages/Details";
 import { Home } from "../views/pages/Home";
 import {useEffect} from 'react'
 import { useDispatch } from "react-redux";
-import {getCategories} from '../redux/topDuck';
+import {getCategories, getMyDislikes, getMyLikes } from '../redux/topDuck';
 import { useSelector } from "react-redux";
 
 export const Router = () => {
+  const likesSelector = useSelector(state => state.categories.myLikes);
+  const dislikesSelector = useSelector(state => state.categories.myDislikes)
   const dispatch = useDispatch()
   useEffect(() => {
       dispatch(getCategories())
+      dispatch(getMyLikes())
+      dispatch(getMyDislikes())
   },[])
+
+  useEffect(() => {
+      localStorage.setItem('myLikes', JSON.stringify(likesSelector))
+      localStorage.setItem('myDislikes', JSON.stringify(dislikesSelector))
+  },[dislikesSelector, likesSelector])
 
   return (
     <>

@@ -7,10 +7,13 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { Subtitle } from "../atoms/Text/Subtitle";
 import { IconText } from "../atoms/Text/IconText";
 import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setDislike, setLike } from "../../redux/topDuck";
 
 export const RecomendedCard = () => {
     const categorySelector = useSelector(state => state.categories.categories)
     const [recomendedItem, setRecomendedItem] = useState();
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const randomCategoryNumber = Math.floor(Math.random() * categorySelector.length);
@@ -19,7 +22,7 @@ export const RecomendedCard = () => {
             const randomItemNumber = Math.floor(Math.random() * (categorySelector[randomCategoryNumber].items.length))
             setRecomendedItem(categorySelector[randomCategoryNumber].items[randomItemNumber])
         }
-    },[categorySelector, categorySelector.length])
+    },[categorySelector.length])
 
     return(
         <>
@@ -36,6 +39,8 @@ export const RecomendedCard = () => {
                                                 icon={faThumbsUp} 
                                                 size={iconSmall}
                                                 isButton
+                                                onClick={() => dispatch(setLike(recomendedItem))}
+                                                color={recomendedItem.isLike && 'cyan'}
                                             />
                                             <IconText content={recomendedItem.likes} color='#838383'/>
                                         </InfoIconsContainer>
@@ -44,6 +49,8 @@ export const RecomendedCard = () => {
                                                 icon={faThumbsDown} 
                                                 size={iconSmall}
                                                 isButton
+                                                onClick={() => dispatch(setDislike(recomendedItem))}
+                                                color={recomendedItem.isDislike && 'cyan'}
                                             />
                                             <IconText content={recomendedItem.dislikes} color='#838383'/>
                                         </InfoIconsContainer>

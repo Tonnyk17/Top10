@@ -7,12 +7,15 @@ import { IconText } from '../atoms/Text/IconText'
 import { Button } from '../atoms/Button'
 import { useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setDislike, setLike } from '../../redux/topDuck'
 
 export const TableInfo = () => {
     const categorySelector = useSelector(state => state.categories.categories)
     const [categoryList, setCategoryList] = useState();
     const {category} = useParams();
     const history = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const categoryFilter = categorySelector.find(item => item.type === category);
@@ -45,11 +48,21 @@ export const TableInfo = () => {
                                     </TableInfoItem>
                                     <TableInfoItem>{item.name}</TableInfoItem>
                                     <TableInfoItem>
-                                        <Icon icon={faThumbsUp} isButton/>
+                                        <Icon 
+                                            icon={faThumbsUp} 
+                                            isButton
+                                            onClick={() => dispatch(setLike(item))}
+                                            color={item.isLike && 'cyan'}
+                                        />
                                         <IconText content={item.likes}/>
                                     </TableInfoItem>
                                     <TableInfoItem>
-                                        <Icon icon={faThumbsDown} isButton/>
+                                        <Icon 
+                                            icon={faThumbsDown} 
+                                            isButton
+                                            onClick={() => dispatch(setDislike(item))}
+                                            color={item.isDislike && 'cyan'}
+                                        />
                                         <IconText content={item.dislikes}/>
                                     </TableInfoItem>
                                 </tr>
