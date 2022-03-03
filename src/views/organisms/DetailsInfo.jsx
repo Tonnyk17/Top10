@@ -77,7 +77,7 @@ export const DetailsInfo = () => {
                     <DetailsInfoStyle>
                         <DetailsImage backImg={itemData.mainImage}/>
                         <DetailTitleContainer>
-                                <TitleImage image={itemData.titleImage}/>
+                                <TitleImage image={itemData.titleImage} name={itemData.name}/>
                         </DetailTitleContainer>
                     </DetailsInfoStyle>
                     <DetailsDataContainer>

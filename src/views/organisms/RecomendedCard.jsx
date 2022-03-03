@@ -8,7 +8,7 @@ import { Subtitle } from "../atoms/Text/Subtitle";
 import { IconText } from "../atoms/Text/IconText";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getMyDislikes, setDislike, setLike } from "../../redux/topDuck";
+import { setDislike, setLike } from "../../redux/topDuck";
 
 export const RecomendedCard = () => {
     const categorySelector = useSelector(state => state.categories.categories)
