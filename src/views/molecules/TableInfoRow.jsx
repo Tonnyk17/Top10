@@ -29,6 +29,9 @@ export const TableInfoRow = ({item, category}) => {
                     setMyLocalDislikes(myLikesFilter)
                 }
             }
+            else{
+                setIsLiked(false)
+            }
         }     
     },[item.isLike, item.name, localSelector])
 
@@ -43,6 +46,9 @@ export const TableInfoRow = ({item, category}) => {
                     setMyLocalDislikes(myDislikeFilter)
                     setMyLocalLikes(myDislikeFilter)
                 }
+            }
+            else{
+                setIsDisliked(false)
             }
         }   
     },[localSelector, item.isDislike, item.name])

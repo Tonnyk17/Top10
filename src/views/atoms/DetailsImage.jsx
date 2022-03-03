@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { desktop } from '../../constants/sizes'
+import { desktop, desktopL } from '../../constants/sizes'
 
 export const DetailsImage = ({backImg}) => {
     return(
@@ -19,9 +19,12 @@ const DetailsImageStyle = styled.div`
     background-repeat:no-repeat;
     background-position: top;
     @media screen and (min-width: ${desktop}){
-      height: 700px;
-      background-position: center;
+      height: 550px;
     }
+    @media screen and (min-width: ${desktopL}){
+        height: 750px;
+        background-position: center;
+      }
 
     &::after{
         content: '';

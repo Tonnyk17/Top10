@@ -29,6 +29,9 @@ export const Card = ({item, category}) => {
                     setMyLocalDislikes(myLikesFilter)
                 }
             }
+            else{
+                setIsLiked(false)
+            }
         }
         
     },[item.isLike, item.name, localSelector])
@@ -44,6 +47,9 @@ export const Card = ({item, category}) => {
                     setMyLocalDislikes(myDislikeFilter)
                     setMyLocalLikes(myDislikeFilter)
                 }
+            }
+            else{
+                setIsDisliked(false)
             }
         
         }

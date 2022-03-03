@@ -43,6 +43,9 @@ export const DetailsInfo = () => {
                     setMyLocalDislikes(myLikesFilter)
                 }
             }
+            else{
+                setIsLiked(false)
+            }
         }
         
     },[localSelector,itemData])
@@ -58,6 +61,9 @@ export const DetailsInfo = () => {
                     setMyLocalDislikes(myDislikeFilter)
                     setMyLocalLikes(myDislikeFilter)
                 }
+            }
+            else{
+                setIsDisliked(false)
             }
         }
         

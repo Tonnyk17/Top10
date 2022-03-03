@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { desktop, iconSmall } from "../../constants/sizes";
+import { desktop, desktopL, iconSmall } from "../../constants/sizes";
 import { Icon } from "../atoms/Icon";
 import { TitleImage } from "../atoms/TitleImage";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import { faThumbsUp, faThumbsDown, faL } from "@fortawesome/free-solid-svg-icons";
 import { Subtitle } from "../atoms/Text/Subtitle";
 import { IconText } from "../atoms/Text/IconText";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setDislike, setLike } from "../../redux/topDuck";
+import { getMyDislikes, setDislike, setLike } from "../../redux/topDuck";
 
 export const RecomendedCard = () => {
     const categorySelector = useSelector(state => state.categories.categories)
@@ -27,11 +27,11 @@ export const RecomendedCard = () => {
             const randomItemNumber = Math.floor(Math.random() * (categorySelector[randomCategoryNumber].items.length))
             setRecomendedItem(categorySelector[randomCategoryNumber].items[randomItemNumber])
         }
-    },[categorySelector, categorySelector.length])
+    },[categorySelector.length])
 
     useEffect(() => {
         if(recomendedItem){
-            const myLikesFilter = localSelector.myLikes?.find(data => data.name === recomendedItem.name)
+            const myLikesFilter = localSelector.myLikes.find(data => data.name === recomendedItem.name)
             if(myLikesFilter){
                 if(myLikesFilter.isLike || recomendedItem.isLike){
                     setIsLiked(true)
@@ -39,24 +39,32 @@ export const RecomendedCard = () => {
                     setMyLocalLikes(myLikesFilter)
                     setMyLocalDislikes(myLikesFilter)
                 }
+
+            }
+            else{
+                setIsLiked(false)
             }
         }
-        
+       
     },[localSelector,recomendedItem])
 
     useEffect(() => {
         if(recomendedItem){
-            const myDislikeFilter = localSelector.myDislikes?.find(data => data.name === recomendedItem.name)
+            const myDislikeFilter = localSelector.myDislikes.find(data => data.name === recomendedItem.name)
             if(myDislikeFilter){
                 if(myDislikeFilter.isDislike || recomendedItem.isDislike){
+            
                     setIsDisliked(true)
                     setIsLiked(false)
                     setMyLocalDislikes(myDislikeFilter)
                     setMyLocalLikes(myDislikeFilter)
                 }
             }
+            else{
+                setIsDisliked(false)
+            }
         }
-        
+
     },[localSelector,recomendedItem])
 
     return(
@@ -67,7 +75,7 @@ export const RecomendedCard = () => {
                         <RecomendedInfoBackground>
                             <RecomendedInfo>
                                     <Subtitle content={'Recommended'} color='whitesmoke'/>
-                                    <TitleImage image={recomendedItem.titleImage}/>
+                                    <TitleImage image={recomendedItem.titleImage} name={recomendedItem.name}/>
                                     <InfoIcons>
                                         <InfoIconsContainer>
                                             <Icon 
@@ -104,9 +112,12 @@ const RecomendedCardStyles = styled.div`
     background-image: url(${props => props.backImg});
     background-size: cover;
     background-repeat:no-repeat;
-    background-position: bottom;
+    background-position: center;
     @media screen and (min-width: ${desktop}){
         height: 550px;
+    }
+    @media screen and (min-width: ${desktopL}){
+        height: 700px;
     }
 `;
 
